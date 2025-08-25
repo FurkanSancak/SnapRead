@@ -1,0 +1,98 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SnapRead.Resources.Languages"
+             x:Class="SnapRead.ReadBook"
+             Title="Read Book">
+
+    <Grid BackgroundColor="{DynamicResource ModeColor}" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnTapped"/>
+        </Grid.GestureRecognizers>
+
+        <!-- Kitap Başlığı-->
+        <Label x:Name="BaslikLabel" FontSize="24" HorizontalOptions="Center" TextColor="{DynamicResource TextColor}"/>
+
+        <!-- Okuma metni -->
+        <Label x:Name="MetinLabel" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource TextColor}"/>
+
+        <!-- Ayarları içeren panel -->
+        <StackLayout x:Name="SettingsPanel" IsVisible="False" Spacing="10">
+
+            <Border BackgroundColor="White" Stroke="Gray" StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="10" MaximumWidthRequest="400">
+
+                <Grid RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Satır 0 -->
+                    <Label Text="{x:Static local:Resources.CC}"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start" />
+
+                    <Entry x:Name="CharCountEntry"
+                   Grid.Row="0" Grid.Column="1"
+                   WidthRequest="150"
+                   HorizontalOptions="End" />
+
+                    <!-- Satır 1 -->
+                    <Label Text="{x:Static local:Resources.Time}"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start" />
+
+                    <Entry x:Name="WordDisplayTimeEntry"
+                   Grid.Row="1" Grid.Column="1"
+                   WidthRequest="150"
+                   HorizontalOptions="End" />
+
+                    <!-- Satır 2 -->
+                    <Label Text="{x:Static local:Resources.Size}"
+                   Grid.Row="2" Grid.Column="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start" />
+
+                    <Entry x:Name="FontSizeEntry"
+                   Grid.Row="2" Grid.Column="1"
+                   WidthRequest="150"
+                   HorizontalOptions="End" />
+
+                    <!-- Satır 3 -->
+                    <Button Text="{x:Static local:Resources.Save}"
+                    Grid.Row="3" Grid.ColumnSpan="2"
+                    Clicked="OnSaveClicked"
+                    BackgroundColor="RoyalBlue"
+                    TextColor="White"/>
+                </Grid>
+            </Border>
+
+        </StackLayout>
+
+        <Grid x:Name="Buttons" RowDefinitions="Auto, Auto, Auto" VerticalOptions="End" Padding="10,0,10,10" RowSpacing="10">
+
+            <HorizontalStackLayout HorizontalOptions="Fill" Grid.Row="0" Spacing="10">
+                <Label x:Name="CursorLabel" VerticalOptions="Center" TextColor="{DynamicResource TextColor}"/>
+                <Entry x:Name="CursorEntry" TextChanged="OnCursorEntry" TextColor="{DynamicResource TextColor}"/>
+                <Button Text="{x:Static local:Resources.Previous}" Clicked="Backward" InputTransparent="False" BackgroundColor="RoyalBlue" TextColor="White"/>
+                <Button Text="{x:Static local:Resources.Next}" Clicked="Forward" InputTransparent="False" BackgroundColor="RoyalBlue" TextColor="White"/>
+            </HorizontalStackLayout>
+
+            <Grid ColumnDefinitions="*,*" Grid.Row="1" ColumnSpacing="10">
+
+                <Button Text="{x:Static local:Resources.Settings}" Clicked="OpenSettingsPanel" Grid.Column="0" InputTransparent="False" BackgroundColor="RoyalBlue" TextColor="White"/>
+
+                <Button Text="{x:Static local:Resources.Close}" Clicked="OnCloseClicked" Grid.Column="1" InputTransparent="False" BackgroundColor="OrangeRed" TextColor="White"/>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</ContentPage>

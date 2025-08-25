@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SnapRead.Resources.Languages"
+             x:Class="SnapRead.NewText"
+             Title="">
+
+    <VerticalStackLayout BackgroundColor="{DynamicResource ModeColor}" Padding="10" Spacing="15">
+
+        <Button Text="{x:Static local:Resources.AddPDF}" Clicked="OnAddPdfClicked" BackgroundColor="BlueViolet" TextColor="White"/>
+        <Label Text="{x:Static local:Resources.Warn}" HorizontalOptions="Center" TextColor="RoyalBlue"/>
+
+        <Border BackgroundColor="White" Stroke="LightGray" StrokeThickness="1" StrokeShape="RoundRectangle 4" Padding="10">
+            <VerticalStackLayout Padding="10" Spacing="10">
+
+                <Entry x:Name="HeaderInput" Placeholder="{x:Static local:Resources.Header}"/>
+                <Editor x:Name="TextInput" Placeholder="{x:Static local:Resources.Text}" HeightRequest="150"/>
+            <Button Text="{x:Static local:Resources.AddText}" Clicked="OnAddTextClicked" BackgroundColor="BlueViolet" TextColor="White"/>
+
+            </VerticalStackLayout>
+        </Border>
+
+    <Button Text="{x:Static local:Resources.Close}" Clicked="OnCloseClicked" BackgroundColor="OrangeRed" TextColor="White"/>
+    </VerticalStackLayout>
+
+</ContentPage>

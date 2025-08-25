@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SnapRead.Resources.Languages"
+             x:Class="SnapRead.Language"
+             Title="Language">
+    <Grid BackgroundColor="{DynamicResource ModeColor}" Grid.Row="0" RowDefinitions="*, Auto" RowSpacing="15" Padding="10">
+
+        <Border Grid.Row="0" Stroke="LightGray" StrokeThickness="1" StrokeShape="RoundRectangle 4" VerticalOptions="Center" WidthRequest="250">
+            <ScrollView>
+                <StackLayout Padding="10" Spacing="5">
+                    <Button Text="عربي" Clicked="AR" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Deutsch" Clicked="DE" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="English" Clicked="EN" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Español" Clicked="ES" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Français" Clicked="FR" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Italiano" Clicked="IT" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Kurdî" Clicked="KU" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Português" Clicked="PT" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Русский" Clicked="RU" BackgroundColor="MediumPurple" TextColor="White"/>
+                    <Button Text="Türkçe" Clicked="TR" BackgroundColor="MediumPurple" TextColor="White"/>
+                </StackLayout>
+            </ScrollView>
+        </Border>
+        <Button Text="{x:Static local:Resources.Close}" Clicked="Close" BackgroundColor="OrangeRed" TextColor="White" Grid.Row="1" HeightRequest="40" WidthRequest="270"/>
+    </Grid>
+</ContentPage>

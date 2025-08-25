@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:local="clr-namespace:SnapRead.Resources.Languages"
+             xmlns:main="clr-namespace:SnapRead"
+             x:Class="SnapRead.MainPage"
+             x:Name="RootPage"
+             Title="">
+
+    <Grid BackgroundColor="{DynamicResource ModeColor}" RowDefinitions="*,Auto" Padding="10" RowSpacing="15">
+
+        <Grid Grid.Row="0" RowDefinitions="Auto,*" RowSpacing="15">
+
+            <Button Text="{x:Static local:Resources.AddText}"
+                    Clicked="OnAddNewTextClicked"
+                    BackgroundColor="BlueViolet"
+                    TextColor="White"
+                    Grid.Row="0" />
+
+            <Border 
+                Grid.Row="1"
+                Stroke="LightGray"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 4"
+                Padding="10">
+
+                <CollectionView x:Name="FileList"
+                                SelectionMode="Single"
+                                ItemsSource="{Binding Files}"
+                                x:DataType="main:MainPage">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="sys:String">
+                            <Grid ColumnSpacing="10" Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Text="{Binding .}"
+                                        Command="{Binding BindingContext.OpenBookCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                        CommandParameter="{Binding .}"
+                                        Grid.Row="0" Grid.Column="0"
+                                        BackgroundColor="RoyalBlue"
+                                        TextColor="White"/>
+                                <Button Text="{x:Static local:Resources.Delete}"
+                                        Command="{Binding BindingContext.DeleteCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                        CommandParameter="{Binding .}"
+                                        Grid.Row="0" Grid.Column="1"
+                                        BackgroundColor="OrangeRed"
+                                        TextColor="White"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Border>
+
+        </Grid>
+
+        <Grid ColumnDefinitions="*,*" Padding="10" RowSpacing="15" ColumnSpacing="10" Grid.Row="1">
+
+            <Button Text="{x:Static local:Resources.Language}"
+                Clicked="OnLanguageClicked"
+                BackgroundColor="MediumPurple"
+                TextColor="White"
+                Grid.Column="0"/>
+
+            <Button x:Name="ModeButton"
+                Clicked="DarkMode"
+                Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</ContentPage>
